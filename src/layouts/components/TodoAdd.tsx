@@ -1,9 +1,11 @@
 import { reaction } from "mobx";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useStores } from "../../stores/TodoStore";
 import { AddIcon } from "../icons";
 export const TodoAdd = () => {
   const { todoStore } = useStores();
+  const { t } = useTranslation();
 
   const input = React.useRef<HTMLInputElement | null>(null);
 
@@ -28,17 +30,19 @@ export const TodoAdd = () => {
   }, []);
 
   return (
-    <form className="todo-form" onSubmit={handleSubmit}>
-      <input
-        ref={input}
-        type="text"
-        name="todo-content"
-        placeholder="Add todo"
-        className="todo-form-input"
-      />
-      <button className="todo-form-button">
-        <AddIcon />
-      </button>
-    </form>
+    <>
+      <form className="todo-form" onSubmit={handleSubmit}>
+        <input
+          ref={input}
+          type="text"
+          name="todo-content"
+          placeholder={t("addTodo")}
+          className="todo-form-input"
+        />
+        <button className="todo-form-button">
+          <AddIcon />
+        </button>
+      </form>
+    </>
   );
 };

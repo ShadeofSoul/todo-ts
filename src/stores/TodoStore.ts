@@ -2,9 +2,11 @@ import { action, computed, makeObservable, observable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import React from "react";
 import { ITodoItem } from "../types";
+import i18n from "i18next";
 
 export class TodoStore {
   option = "All";
+  currentLanguage = "en";
   constructor() {
     makeObservable(this, {
       todoItems: observable,
@@ -19,6 +21,8 @@ export class TodoStore {
       option: observable,
       completedTodos: computed,
       uncompletedTodos: computed,
+      currentLanguage: observable,
+      setLanguage: action,
     });
 
     makePersistable(this, {
@@ -27,7 +31,6 @@ export class TodoStore {
       storage: localStorage,
     });
   }
-
   todoItems: ITodoItem[] = [
     {
       id: 1,
@@ -42,6 +45,10 @@ export class TodoStore {
   ];
   setFilter(option: string) {
     this.option = option;
+  }
+  setLanguage(language: string) {
+    this.currentLanguage = language;
+    i18n.changeLanguage(language);
   }
   setTodoItems = (v: ITodoItem[]) => {
     this.todoItems = v;

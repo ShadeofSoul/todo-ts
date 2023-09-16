@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import { observer } from "mobx-react";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { useStores } from "../../stores/TodoStore";
 
-const LanguageSwitcher: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("fr");
-
+const LanguageSwitcher: React.FC = observer(() => {
+  const { todoStore } = useStores();
+  const { t, i18n } = useTranslation();
   const handleLanguageChange = (language: string) => {
-    setSelectedLanguage(language);
+    todoStore.setLanguage(language);
   };
 
   return (
@@ -15,7 +18,7 @@ const LanguageSwitcher: React.FC = () => {
     >
       <div
         className={`language__container--left language__container--${
-          selectedLanguage === "fr" ? "active" : ""
+          todoStore.currentLanguage === "ru" ? "active" : ""
         }`}
       >
         <input
@@ -23,16 +26,16 @@ const LanguageSwitcher: React.FC = () => {
           type="radio"
           id="language1-1"
           name="language-switch1"
-          checked={selectedLanguage === "fr"}
-          onChange={() => handleLanguageChange("fr")}
+          checked={todoStore.currentLanguage === "ru"}
+          onChange={() => handleLanguageChange("ru")}
         />
         <label className="language__label" htmlFor="language1-1">
-          RU
+          {t("ru")}
         </label>
       </div>
       <div
         className={`language__container--right language__container--${
-          selectedLanguage === "en" ? "active" : ""
+          todoStore.currentLanguage === "en" ? "active" : ""
         }`}
       >
         <input
@@ -40,15 +43,15 @@ const LanguageSwitcher: React.FC = () => {
           type="radio"
           id="language1-2"
           name="language-switch1"
-          checked={selectedLanguage === "en"}
+          checked={todoStore.currentLanguage === "en"}
           onChange={() => handleLanguageChange("en")}
         />
         <label className="language__label" htmlFor="language1-2">
-          EN
+          {t("en")}
         </label>
       </div>
     </div>
   );
-};
+});
 
 export default LanguageSwitcher;
