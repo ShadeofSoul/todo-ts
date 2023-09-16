@@ -1,8 +1,9 @@
 import { reaction } from "mobx";
 import { observer } from "mobx-react";
 import React from "react";
-import { Check, Edit2, Plus, SkipBack } from "react-feather";
-import DeleteIcon from "./layouts/DeleteIcon";
+import { Edit2, Plus } from "react-feather";
+import CheckIcon from "./layouts/icons/CheckIcon";
+import DeleteIcon from "./layouts/icons/DeleteIcon";
 import { useStores } from "./stores/TodoStore";
 import { ITodoItem } from "./types";
 
@@ -33,16 +34,12 @@ export const TodoItem: React.FC<TodoItemProps> = observer(({ item }) => {
       <button onClick={onEditClick} disabled={item.done}>
         <Edit2 size="20" color="#fff" />
       </button>
-      <button className="green" onClick={onCheckClick}>
-        {item.done ? (
-          <SkipBack size="20" color="#fff" />
-        ) : (
-          <Check size="20" color="#fff" />
-        )}
+      <button onClick={onCheckClick}>
+        <CheckIcon checked={item.done} />
       </button>
       <button className="red" onClick={onTrashClick}>
         {/* <Trash size="20" color="#fff" /> */}
-        <DeleteIcon/>
+        <DeleteIcon />
       </button>
     </li>
   );
@@ -77,7 +74,6 @@ export const TodoForm = () => {
       input.current.value = "";
     }
   };
-
 
   React.useEffect(() => {
     reaction(
