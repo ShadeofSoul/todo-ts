@@ -1,20 +1,23 @@
-import { action, computed, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import React from "react";
 import { ITodoItem } from "../types";
 
 export class TodoStore {
+  option = "All";
   constructor() {
     makeObservable(this, {
       todoItems: observable,
       setTodoItems: action,
-      sortedTodoItems: computed,
+      sortedTodoItems: action,
       itemToEdit: observable,
       setItemToEdit: action,
       addItem: action,
       toggleState: action,
+      setFilter: action,
       removeItem: action,
       setEditItem: action,
+      option: observable,
     });
 
     makePersistable(this, {
@@ -36,14 +39,27 @@ export class TodoStore {
       done: false,
     },
   ];
-
+  setFilter(option: string) {
+    this.option = option;
+  }
   setTodoItems = (v: ITodoItem[]) => {
     this.todoItems = v;
   };
 
-  get sortedTodoItems(): ITodoItem[] {
-    return this.todoItems.slice().sort((a, b) => a.id - b.id);
-  }
+  sortedTodoItems = () => {
+    switch (this.option) {
+      case "All":
+        return this.todoItems.slice().sort((a, b) => a.id - b.id);
+      case "Completed": {
+        console.log(this.todoItems.filter((item) => item.done));
+        return this.todoItems.filter((item) => item.done);
+      }
+      case "Uncompleted":
+        return this.todoItems.filter((item) => !item.done);
+      default:
+        return this.todoItems;
+    }
+  };
 
   itemToEdit?: ITodoItem;
 
@@ -80,7 +96,6 @@ export class TodoStore {
   setEditItem(item: ITodoItem) {
     this.itemToEdit = item;
   }
-  
 }
 
 const rootStore = { todoStore: new TodoStore() };
