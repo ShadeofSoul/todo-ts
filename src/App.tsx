@@ -1,19 +1,12 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { theme } from "./styles/palette";
+import "./App.scss";
+import { TodoForm, TodoItemList } from "./Modules";
 
-const Box = styled.div`
-  background-color: ${(p) => p.theme.colors.primary};
-`;
-
-function App() {
+export const App: React.FC = () => {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Box className="App">aserdvgserfbs</Box>
-      </ThemeProvider>
-    </>
+    <div className="todo">
+      <TodoForm />
+      <TodoItemList />
+    </div>
   );
-}
-
-export default App;
+};
