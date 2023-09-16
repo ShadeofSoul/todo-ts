@@ -1,9 +1,10 @@
-import React from "react";
 import { reaction } from "mobx";
 import { observer } from "mobx-react";
-import { Check, Edit2, Plus, SkipBack, Trash } from "react-feather";
-import { ITodoItem } from "./types";
+import React from "react";
+import { Check, Edit2, Plus, SkipBack } from "react-feather";
+import DeleteIcon from "./layouts/DeleteIcon";
 import { useStores } from "./stores/TodoStore";
+import { ITodoItem } from "./types";
 
 interface TodoItemProps {
   item: ITodoItem;
@@ -40,7 +41,8 @@ export const TodoItem: React.FC<TodoItemProps> = observer(({ item }) => {
         )}
       </button>
       <button className="red" onClick={onTrashClick}>
-        <Trash size="20" color="#fff" />
+        {/* <Trash size="20" color="#fff" /> */}
+        <DeleteIcon/>
       </button>
     </li>
   );
