@@ -1,4 +1,4 @@
-const DeleteIcon = () => {
+export const DeleteIcon = () => {
   return (
     <svg
       width="24"
@@ -7,7 +7,7 @@ const DeleteIcon = () => {
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      stroke="#FFFFFF"
+      stroke="#ff6666"
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -17,4 +17,3 @@ const DeleteIcon = () => {
   );
 };
 
-export default DeleteIcon;

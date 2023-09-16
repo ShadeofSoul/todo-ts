@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.scss";
-import { TodoForm, TodoItemList } from "./Modules";
+import { TodoAdd, TodoFilter, TodoItemList } from "./layouts/components";
 
 export const App: React.FC = () => {
   return (
     <div className="todo">
-      <TodoForm />
+      <TodoAdd />
+      <TodoFilter />
       <TodoItemList />
     </div>
   );

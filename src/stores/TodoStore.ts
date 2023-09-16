@@ -80,6 +80,7 @@ export class TodoStore {
   setEditItem(item: ITodoItem) {
     this.itemToEdit = item;
   }
+  
 }
 
 const rootStore = { todoStore: new TodoStore() };
