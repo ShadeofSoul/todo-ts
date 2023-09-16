@@ -1,5 +1,5 @@
-import React from "react";
 import { reaction } from "mobx";
+import React from "react";
 import { useStores } from "../../stores/TodoStore";
 import { AddIcon } from "../icons";
 export const TodoAdd = () => {
@@ -9,7 +9,7 @@ export const TodoAdd = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    todoStore.setFilter("All");
     if (input.current && input.current.value) {
       todoStore.addItem(input.current.value);
       input.current.value = "";
@@ -25,7 +25,6 @@ export const TodoAdd = () => {
         }
       }
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

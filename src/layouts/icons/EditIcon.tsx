@@ -1,4 +1,4 @@
-export const EditIcon = () => {
+export const EditIcon = ({ done }: { done: boolean }) => {
   return (
     <svg
       width="24"
@@ -6,7 +6,7 @@ export const EditIcon = () => {
       enableBackground="new 0 0 24 24"
       viewBox="0 0 18 18"
       xmlns="http://www.w3.org/2000/svg"
-      stroke="#5884E6"
+      stroke={done ? "#989898a5" : "#5884E6"}
       fill="none"
       strokeWidth="1"
       strokeLinecap="round"

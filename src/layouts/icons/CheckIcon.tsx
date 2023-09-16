@@ -7,10 +7,10 @@ export const CheckIcon = ({ checked }: { checked: boolean }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="8" cy="8" r="7.5" stroke={checked ? "#3DF4BD" : "#CCCCCC"} />
+      <circle cx="8" cy="8" r="7.5" stroke={checked ? "#3DF4BD" : "#FFFFFF"} />
       <path
         d="M12.2248 5.54644L6.45454 11.3167L4.56892 9.43109"
-        stroke={checked ? "#3DF4BD" : "#CCCCCC"}
+        stroke={checked ? "#3DF4BD" : "#FFFFFF"}
       />
     </svg>
   );

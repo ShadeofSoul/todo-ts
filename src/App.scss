@@ -2,7 +2,9 @@
   box-sizing: border-box !important;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+body {
+  background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+}
 html,
 body,
 #root {
@@ -20,16 +22,20 @@ body,
 }
 
 .todo {
-  margin-top: 48px;
+  margin: 4rem auto;
+  padding: 2rem 3rem 3rem;
+  max-width: 500px;
+  background: #cccccc90;
+  color: #fff;
+  box-shadow: -20px -20px 0px 0px #3df4bd;
   & {
     max-width: 400px;
     width: 100%;
   }
 
   & button {
-    background: white;
+    background: #cccccc98;
     border: none;
-    padding: 8px 4px;
     text-align: left;
     line-height: 24px;
     font-size: 13px;
@@ -76,8 +82,8 @@ body,
     &-item {
       display: flex;
       margin-bottom: 10px;
-      border-top: 1px solid #ccc;
-      border-bottom: 1px solid #ccc;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
       & > span {
         flex-grow: 1;
         line-height: 40px;
@@ -87,9 +93,7 @@ body,
       &.done > span {
         transition: all 0.8s ease;
         text-decoration: line-through;
-      }
-      &.checked {
-        color: #ccc;
+        text-decoration-color: #3df4bd;
       }
     }
   }
@@ -120,7 +124,7 @@ body,
   width: 100%;
   padding: 0 0.5em;
   &.active {
-    box-shadow: inset 0 -0.25em royalblue;
+    box-shadow: inset 0 -0.1em #d336fa;
     transition: all 150ms linear;
   }
 }
@@ -132,4 +136,63 @@ input[type="radio"] {
   height: 100%;
   opacity: 0;
   cursor: pointer;
+}
+
+$language-width: 55px;
+$language-height: 30px;
+$language-focus: #3df4bd;
+$language-border: #ccc;
+$language-hover: #eee;
+$language-checked: #ddd;
+
+// language styles
+
+.language {
+  width: $language-width * 2;
+  height: $language-height;
+  font-size: 14px;
+  line-height: 1;
+  margin: 1em 0;
+}
+
+.language__container--left,
+.language__container--right {
+  position: relative;
+  float: left;
+  height: $language-height;
+}
+
+.language__label {
+  width: $language-width;
+  height: $language-height;
+  border: 1px solid $language-border;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #3df4bd;
+}
+
+.language__container--left .language__label {
+  border-radius: 4px 0 0 4px;
+}
+
+.language__container--right .language__label {
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.language__control:hover + .language__label,
+.language__control:focus + .language__label {
+  background-color: $language-hover;
+}
+
+.language__control:checked + .language__label {
+  background-color: white;
+}
+
+.language__control:focus + .language__label,
+.language__control:checked:focus + .language__label {
+  z-index: 2;
+  outline: 2px solid $language-focus;
+  box-shadow: 0 0 8px $language-focus;
 }
