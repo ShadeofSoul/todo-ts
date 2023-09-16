@@ -27,7 +27,7 @@ export const TodoAdd = () => {
         }
       }
     );
-  }, []);
+  }, [todoStore.itemToEdit]);
 
   return (
     <>

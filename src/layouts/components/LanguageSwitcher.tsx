@@ -5,7 +5,7 @@ import { useStores } from "../../stores/TodoStore";
 
 const LanguageSwitcher: React.FC = observer(() => {
   const { todoStore } = useStores();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const handleLanguageChange = (language: string) => {
     todoStore.setLanguage(language);
   };
