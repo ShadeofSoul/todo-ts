@@ -59,3 +59,4 @@
 
 - Email: [moinokovaaijan@gmail.com]
 - GitHub: [https://github.com/ShadeofSoul]
+- Deploy: [https://6506501ea20b4e6a5e8ee64c--harmonious-fox-aaacf4.netlify.app/]
